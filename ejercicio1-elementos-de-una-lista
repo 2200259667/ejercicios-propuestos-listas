@@ -1,0 +1,64 @@
+using System;
+
+public class Node
+{
+    public int Data;
+    public Node Next;
+
+    public Node(int data)
+    {
+        Data = data;
+        Next = null;
+    }
+}
+
+public class LinkedList
+{
+    private Node head;
+
+    public LinkedList()
+    {
+        head = null;
+    }
+
+    // Método para agregar un nodo al final de la lista
+    public void AddLast(int data)
+    {
+        Node newNode = new Node(data);
+        if (head == null)
+        {
+            head = newNode;
+        }
+        else
+        {
+            Node current = head;
+            while (current.Next != null)
+            {
+                current = current.Next;
+            }
+            current.Next = newNode;
+        }
+    }
+
+    // Método para calcular el número de elementos en la lista
+    public int Count()
+    {
+        int count = 0;
+        Node current = head;
+        while (current != null)
+        {
+            count++;
+            current = current.Next;
+        }
+        return count;
+    }
+
+    public static void Main(string[] args)
+    {
+        LinkedList list = new LinkedList();
+        list.AddLast(1);
+        list.AddLast(2);
+        list.AddLast(3);
+        Console.WriteLine("Número de elementos en la lista: " + list.Count());
+    }
+}
